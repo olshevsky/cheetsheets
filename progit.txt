@@ -2,104 +2,104 @@ Pro Git by Scott Chacon and Ben Straub (https://git-scm.com/book/en/v2)
 
 git --version
 git help <verb>		// show doc in browser
-git <verb> -h		// cli doc
+git <verb> -h		  // cli doc
 
-git config -l									// list configs
-git config --list --show-origin					// show configs with locations
-git config --global user.name 'art' 			// --system --global --loc
+git config -l									                  // list configs
+git config --list --show-origin					        // show configs with locations
+git config --global user.name 'art' 			      // --system --global --loc
 git config --global user.email 'admin@mail.com'	// set email
-git config --global merge.tool tortoisemerge	// set mergetool to turtoise git
-git config --global credential.helper cache		// remember credential
+git config --global merge.tool tortoisemerge	  // set mergetool to turtoise git
+git config --global credential.helper cache		  // remember credential
 
 // Getting a git repository
-git init					// init repository
+git init					          // init repository
 git remote add origin <url> // add remote repo url
-git clone <origin> <dir>	// clone repo
+git clone <origin> <dir>	  // clone repo
 
 // Recording changes to the repository
-git status					// show current branch and unstaged/staged file list
-git status -s 				// short status (staging area status, working tree status)
-git add <file>				// multipurpose command for tracking new files, to stage files, and to do other things like marking merge-conflicted files
+git status					        // show current branch and unstaged/staged file list
+git status -s 				      // short status (staging area status, working tree status)
+git add <file>				      // multipurpose command for tracking new files, to stage files, and to do other things like marking merge-conflicted files
 git restore --staged <file> // unstage file
-git restore <file>			// discard changes in working directory
+git restore <file>			    // discard changes in working directory
 
-git diff 					// shows content diff of unstaged and staged files
-git diff --staged 			// shows content diff of staged files and last commit
+git diff 					  // shows content diff of unstaged and staged files
+git diff --staged   // shows content diff of staged files and last commit
 git difftool 				// run GUI diff tool
 
 git commit -m "test"		// make commit with message
-git commit -v				// show all changes in editor
-git commit -a				// skip staging area
+git commit -v				    // show all changes in editor
+git commit -a				    // skip staging area
 git commit --amend			// redo last commit (before any push has been made)
 
-git rm <file>					// delete file from working tree and remove from staging
-git rm --cached <file>			// removes file from staging area, but keeps it in working tree
+git rm <file>					        // delete file from working tree and remove from staging
+git rm --cached <file>			  // removes file from staging area, but keeps it in working tree
 git mv <old_name> <new_name>	// rename file (equivalent of git rm <old_name> git add <new_name>)
 
 // View commit history
-git log 										// shows commit history	
-git log -p -2									// -p or --patch shows the difference (the patch output) introduced in each commit, 2 last commits
-git log --stat									// --stat option prints below each commit entry a list of modified files, how many files were changed, and how many lines in those files were added and removed
-git log --pretty=oneline						// log output to formats other than the default (oneline, short, full, and fuller)
-git log --pretty=format:"%h - %an, %ar : %s" 	// custom format output
-git log --pretty=format:"%h %s" --graph			// show branch graph
-git log --since=2.weeks							// list of commits made in the last two weeks (--since/--after, --until/--before)
-git log --after="2008-01-15"					// commits since specific date
-git log --before="2008-03-15T10:31:28-07:00" 	// commits until specific date with ISO 8601 time format
-git log --author="Scott" --grep="test code" 	// filter commits by search criteria (author, commit message) --committer
-git log -S checkSales							// only show commits adding or removing code matching the string
+git log 										               // shows commit history	
+git log -p -2									             // -p or --patch shows the difference (the patch output) introduced in each commit, 2 last commits
+git log --stat									           // --stat option prints below each commit entry a list of modified files, how many files were changed, and how many lines in those files were added and removed
+git log --pretty=oneline						            // log output to formats other than the default (oneline, short, full, and fuller)
+git log --pretty=format:"%h - %an, %ar : %s" 	  // custom format output
+git log --pretty=format:"%h %s" --graph			    // show branch graph
+git log --since=2.weeks							            // list of commits made in the last two weeks (--since/--after, --until/--before)
+git log --after="2008-01-15"					          // commits since specific date
+git log --before="2008-03-15T10:31:28-07:00" 	  // commits until specific date with ISO 8601 time format
+git log --author="Scott" --grep="test code" 	  // filter commits by search criteria (author, commit message) --committer
+git log -S checkSales							              // only show commits adding or removing code matching the string
 git log -- C:/docker/artel/SalesController.php	// filter commits by file name or directory
-git log --no-merges								// prevent the display of merge commits cluttering up your log history
+git log --no-merges								              // prevent the display of merge commits cluttering up your log history
 git log --pretty="%h - %s" --author='artur' --after="2008-10-01" \ --before="2008-11-01" --no-merges -- t/
 
 
 // Undoing things
-git reset HEAD <file>	// unstage file (git restore --staged <file>)
+git reset HEAD <file>	  // unstage file (git restore --staged <file>)
 git checkout -- <file>	// discard file changes in working directory
 
 
 // Working with remotes
-git remote						// lists remotes
-git remote -v					// lists remotes with urls
+git remote						        // lists remotes
+git remote -v					        // lists remotes with urls
 git remote add <name> <url>		// add new remote
-git fetch <remote>				// fetch repository data from specific remote, but doesnt merge it into working tree
-git pull <remote>				// fetch and merge automatically (if your local branch tracks a remote branch)
+git fetch <remote>				    // fetch repository data from specific remote, but doesnt merge it into working tree
+git pull <remote>				      // fetch and merge automatically (if your local branch tracks a remote branch)
 git push <remote> <branch>		// push local branch to remote
-git remote show <remote>		// show info about a particular remote
-git ls-remote <remote>			// show info about a particular remote
+git remote show <remote>		  // show info about a particular remote
+git ls-remote <remote>			  // show info about a particular remote
 git remote rename <old> <new>	// rename remote
-git remote rm <remote>			// remove remote
+git remote rm <remote>			  // remove remote
 
 git clone -o <name>							// clone repo and give remote name (other than origin)
 git fetch <remote>							// synchronize local branch with a given remote (moves your origin/master pointer to its new position)
-git remote add <name> <url>					// add new remote
-git push <remote> <branch>					// push branch to remote
-git push origin hotfix:deploy				// push branch to remote with different names
+git remote add <name> <url>			// add new remote
+git push <remote> <branch>			// push branch to remote
+git push origin hotfix:deploy		// push branch to remote with different names
 
 // creates what is called a "tracking branch" (and the branch it tracks is called an "upstream branch")
 git checkout -b <branch> <remote>/<branch> 	// create local branch and set up it to track remote branch from origin
-git checkout --track <remote>/<branch>		// shortcut create local branch and set up it to track remote branch from origin
-git checkout <branch>						// if the <branch> doesn’t exist and exactly matches a name on only one remote
-git branch -u <remote>/<branch>				// set local branch to track remote branch or change the upstream branch ( -u or --set-upstream-to )
-git merge @{u}								// merge with upstream branch ( @{u} or @{upstream} )
-git branch -vv								// list local branches with more information ( remote tracking branch, ahead, behind or both etc.)
-git push <remote> --delete <branch>			// delete branch from server
+git checkout --track <remote>/<branch>		  // shortcut create local branch and set up it to track remote branch from origin
+git checkout <branch>						            // if the <branch> doesn’t exist and exactly matches a name on only one remote
+git branch -u <remote>/<branch>				      // set local branch to track remote branch or change the upstream branch ( -u or --set-upstream-to )
+git merge @{u}								              // merge with upstream branch ( @{u} or @{upstream} )
+git branch -vv								              // list local branches with more information ( remote tracking branch, ahead, behind or both etc.)
+git push <remote> --delete <branch>			    // delete branch from server
 
 
 // Tags
-git tag							// list existing tags
-git tag -l "v1.8.5*"			// search tags by matching a particular pattern
+git tag							          // list existing tags
+git tag -l "v1.8.5*"			    // search tags by matching a particular pattern
 git tag -a v1.4 -m "my v1.4"	// create annotated tag
-git tag 1.4lw					// create lightweight tag
-git show v1.4					// show specific tag
-git tag -a v1.2 9fceb02			// tag specific commit
-git push <remote> <tag>			// push tag to remote
-git push <remote> --tags		// push all tags (annotated and lightweight) to remote
-git push <remote> --follow-tags	// will push only annotated tags
-git tag -d <tag>				// delete specific tag locally
+git tag 1.4lw					        // create lightweight tag
+git show v1.4					        // show specific tag
+git tag -a v1.2 9fceb02			  // tag specific commit
+git push <remote> <tag>			  // push tag to remote
+git push <remote> --tags		  // push all tags (annotated and lightweight) to remote
+git push <remote> --follow-tags	  // will push only annotated tags
+git tag -d <tag>				          // delete specific tag locally
 git push <remote> :refs/tags/<tagname>	// delete tag on remote
-git push <remote> --delete <tagname>	// delete tag on remote
-git checkout <tag>						// checkout to specific tag (warning puts your repository in "detached HEAD" state)
+git push <remote> --delete <tagname>	  // delete tag on remote
+git checkout <tag>						          // checkout to specific tag (warning puts your repository in "detached HEAD" state)
 
 
 // Aliases
@@ -107,33 +107,33 @@ git config --global alias.co checkout 					// git co is qual to git checkout
 git config --global alias.br branch
 git config --global alias.ci commit
 git config --global alias.st statu
-git config --global alias.unstage "reset HEAD --" 		// unstaging a file alias
-git config --global alias.last "log -1 HEAD"			// show last commit
-git config --global alias.visual "!gitk"				// create alias for external command
-git config --global alias.logp "log --pretty=oneline"						// pretty log
+git config --global alias.unstage "reset HEAD --"  // unstaging a file alias
+git config --global alias.last "log -1 HEAD"			 // show last commit
+git config --global alias.visual "!gitk"				    // create alias for external command
+git config --global alias.logp "log --pretty=oneline"						          // pretty log
 git config --global alias.graph "log --oneline --decorate --graph --all"	// pretty graph
 
 
 // Branching
 git branch <name>							// create new branch without switching to it
-git checkout -b <name>						// create new branch and switch to it
-git switch -c <name>						// create new branch and switch to it
-git checkout <name>							// switch to existing branch
+git checkout -b <name>				// create new branch and switch to it
+git switch -c <name>					// create new branch and switch to it
+git checkout <name>						// switch to existing branch
 git switch <name>							// switch to existing branch
-git switch -								// switch to previously checked branch
+git switch -								  // switch to previously checked branch
 git merge <name>							// merge branch you are currently on with <name> branch (fast-forward - if <name> branch is directly ahead of the commit you’re on)
-git branch -d <name>						// delete branch
+git branch -d <name>					// delete branch
 git mergetool 								// run GUI tool
-git branch --merged							// show only merged branches (with the current branch)
-git branch --no-merged						// dont merged branches
-git branch -v								// show branches with last commit
+git branch --merged						// show only merged branches (with the current branch)
+git branch --no-merged				// dont merged branches
+git branch -v								  // show branches with last commit
 
-git branch --move <old> <new>				// rename branch locally from old to new
-git push --set-upstream origin <new>		// push new name to remote
+git branch --move <old> <new>				  // rename branch locally from old to new
+git push --set-upstream origin <new>  // push new name to remote
 git push origin --delete <old>				// remove old remot branch
 
 git log --oneline --decorate				// shows where the branch pointers are pointing
-git log --all								// show all branches
+git log --all								        // show all branches
 git log --oneline --decorate --graph --all 	// print out the history of commits, showing where branch pointers are and how history has diverged
 
 git cherry-pick <hash>						// copy commit by hash in current branch
