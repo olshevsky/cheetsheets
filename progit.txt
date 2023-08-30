@@ -123,6 +123,7 @@ git switch <name>							// switch to existing branch
 git switch -								  // switch to previously checked branch
 git merge <name>							// merge branch you are currently on with <name> branch (fast-forward - if <name> branch is directly ahead of the commit you’re on)
 git branch -d <name>					// delete branch
+git remote prune origin       // after deleting the local branch, you'll also want to remove the remote tracking reference associated with the deleted remote branch
 git mergetool 								// run GUI tool
 git branch --merged						// show only merged branches (with the current branch)
 git branch --no-merged				// dont merged branches
